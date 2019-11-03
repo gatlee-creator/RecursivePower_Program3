@@ -6,7 +6,7 @@ int RePower(int number, int exponent){
         return 1;
     if(exponent == 1)
         return number;
-    
+
     return number * RePower(number, exponent - 1);
 }
 
@@ -33,8 +33,15 @@ int main()
             continue;
         }
 
-        //here we call Repower and display the result
-        cout << "RESULT: " << RePower(inputNumber, inputExpo) << endl;
+        //first we must check if our result will cause an overflow 
+        if(RePower(inputNumber, inputExpo) <= 0){
+            cout << "warning: these numbers will cause an overflow" << endl;
+        }
+        else {
+            //here we call Repower and display the result
+            cout << "RESULT: " << RePower(inputNumber, inputExpo) << endl;
+        }
+       
 
         //here we will ask user if they want to continue 
         cout << "ENTER ANOTHER NUMBER?" << endl;
