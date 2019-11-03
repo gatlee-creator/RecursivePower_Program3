@@ -22,7 +22,7 @@ int main()
         cout << "ENTER AN INTEGER: " << endl;
         cin >> inputNumber;
         if(inputNumber < VALID_LIMIT){
-            cout << "error: integer must be non-negative" << endl;
+            cerr << "error: integer must be non-negative" << endl;
             continue;
         }
 
@@ -30,13 +30,13 @@ int main()
         cout << "ENTER AN EXPONENT: " << endl;
         cin >> inputExpo; 
         if(inputExpo < VALID_LIMIT){
-            cout << "error: exponent must be a non-negative" << endl;
+            cerr << "error: exponent must be a non-negative" << endl;
             continue;
         }
 
         //first we must check if our result will cause an overflow 
         if(RePower(inputNumber, inputExpo) <= VALID_LIMIT){
-            cout << "warning: these numbers will cause an overflow" << endl;
+            cerr << "warning: these numbers will cause an overflow" << endl;
         }
         else {
             //here we call Repower and display the result
