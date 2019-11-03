@@ -14,11 +14,17 @@ int main()
 {
     int inputNumber, inputExpo;
 
-    cout << "ENTER AN INTEGER: " << endl;
-    cin >> inputNumber;
-    cout << "ENTER AN EXPONENT: " << endl;
-    cin >> inputExpo; 
-    cout << "RESULT: " << RePower(inputNumber, inputExpo) << endl;
+    while (true)
+    {
+        cout << "ENTER AN INTEGER: " << endl;
+        cin >> inputNumber;
+        cout << "ENTER AN EXPONENT: " << endl;
+        cin >> inputExpo; 
+        cout << "RESULT: " << RePower(inputNumber, inputExpo) << endl;
+    }
+    
+
+   
 
 
     return 0; 
