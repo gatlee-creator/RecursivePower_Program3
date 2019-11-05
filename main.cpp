@@ -1,13 +1,15 @@
 #include <iostream>
 using namespace std;
 
-int RePower(int number, int exponent){
+float RePower(int number, int exponent){
     if(exponent == 0)
         return 1;
     if(exponent == 1)
         return number;
-
-    return number * RePower(number, exponent - 1);
+    if(exponent < 0) //negative exponent 
+        return 1 / (float)(RePower(number, exponent -1));
+    else
+        return number * RePower(number, exponent - 1); //positive exponent 
 }
 
 int main()
@@ -15,6 +17,7 @@ int main()
     int inputNumber, inputExpo;
     char inputChoice;
     const int INVALID_LIMIT = 0;
+    
 
     while (true)
     {
@@ -29,12 +32,16 @@ int main()
         //here we ask and check the exponent 
         cout << "ENTER AN EXPONENT: " << endl;
         cin >> inputExpo; 
-        if(inputExpo < INVALID_LIMIT){
-            cerr << "error: exponent must be a non-negative" << endl;
-            continue;
-        }
+        // if(inputExpo < INVALID_LIMIT){
+        //     cerr << "error: exponent must be a non-negative" << endl;
+        //     continue;
+        // }
 
         //first we must check if our result will cause an overflow 
+        /*
+            If the return value is negative that indicates an overflow.
+            If there is a 0 then the carryout was 0 meaning overflow.
+        */
         if(RePower(inputNumber, inputExpo) <= INVALID_LIMIT){
             cerr << "warning: these numbers will cause an overflow" << endl;
         }
@@ -55,11 +62,7 @@ int main()
             break; //exit program
         
         
-    }
-    
-
-   
-
+    } //end loop
 
     return 0; 
 }
