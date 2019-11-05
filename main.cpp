@@ -14,14 +14,14 @@ int main()
 {
     int inputNumber, inputExpo;
     char inputChoice;
-    const int VALID_LIMIT = 0;
+    const int INVALID_LIMIT = 0;
 
     while (true)
     {
         //here we ask and check the integer 
         cout << "ENTER AN INTEGER: " << endl;
         cin >> inputNumber;
-        if(inputNumber < VALID_LIMIT){
+        if(inputNumber < INVALID_LIMIT){
             cerr << "error: integer must be non-negative" << endl;
             continue;
         }
@@ -29,13 +29,13 @@ int main()
         //here we ask and check the exponent 
         cout << "ENTER AN EXPONENT: " << endl;
         cin >> inputExpo; 
-        if(inputExpo < VALID_LIMIT){
+        if(inputExpo < INVALID_LIMIT){
             cerr << "error: exponent must be a non-negative" << endl;
             continue;
         }
 
         //first we must check if our result will cause an overflow 
-        if(RePower(inputNumber, inputExpo) <= VALID_LIMIT){
+        if(RePower(inputNumber, inputExpo) <= INVALID_LIMIT){
             cerr << "warning: these numbers will cause an overflow" << endl;
         }
         else {
