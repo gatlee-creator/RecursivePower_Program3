@@ -3,6 +3,13 @@
     Course: csc1720
     Date: 11/5/19
     Location of Program: ~/csc1720/Programs/program3
+
+    This program contains code for a recursive power function.
+    The maxium grade attempt is 100%. Features include:
+    - Standard exponentiation 
+    - Negative exponents
+    - Program repeats until quit by user
+    - Warn of overflow
 */
 
 #include <iostream>
@@ -11,17 +18,23 @@ using namespace std;
 
 
 float RePower(int number, int exponent);
-
-
+/*
+    This is a recursive function that calculates the 
+    result of an integer raised to a power.
+    Preconditions:
+        number >= 0
+        exponent <= 0 || exponent >= 0
+    If number is a negative then the program will prompt
+    the user to enter a positive till satisfied. 
+*/
 
 int main()
 {
     int inputNumber, inputExpo;
     char inputChoice;
-    const int INVALID_LIMIT = 0;
-    float MAX_FLOAT = numeric_limits<float>::infinity();
+    const int INVALID_LIMIT = 0; //setting the threshold 
+    float MAX_FLOAT = numeric_limits<float>::infinity(); //data type limit 
   
-
 
     while (true)
     {
@@ -64,7 +77,12 @@ int main()
     return 0; 
 }
 
-
+/*
+    This is the defenition of Repower
+    Postcondition:
+        number raised to the power of exponent 
+        ex. 2^4 = 16
+*/
 float RePower(int number, int exponent){
     if(exponent == 0)
         return 1;
