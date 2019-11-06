@@ -7,7 +7,7 @@ float RePower(int number, int exponent){
     if(exponent == 1)
         return number;
     if(exponent < 0) //negative exponent 
-        return 1 / (float)(RePower(number, exponent -1));
+        return 1 / (float)(RePower(number, -exponent));
     else
         return number * RePower(number, exponent - 1); //positive exponent 
 }
@@ -29,13 +29,10 @@ int main()
             continue;
         }
 
-        //here we ask and check the exponent 
+        //here we ask for exponent - non-negative is allowed so need for check  
         cout << "ENTER AN EXPONENT: " << endl;
         cin >> inputExpo; 
-        // if(inputExpo < INVALID_LIMIT){
-        //     cerr << "error: exponent must be a non-negative" << endl;
-        //     continue;
-        // }
+     
 
         //first we must check if our result will cause an overflow 
         /*
