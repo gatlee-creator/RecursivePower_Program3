@@ -1,23 +1,27 @@
+/*
+    Name: Graham Atlee 
+    Course: csc1720
+    Date: 11/5/19
+    Location of Program: ~/csc1720/Programs/program3
+*/
+
 #include <iostream>
+#include <limits>
 using namespace std;
 
-float RePower(int number, int exponent){
-    if(exponent == 0)
-        return 1;
-    if(exponent == 1)
-        return number;
-    if(exponent < 0) //negative exponent 
-        return 1 / (float)(RePower(number, -exponent));
-    else
-        return number * RePower(number, exponent - 1); //positive exponent 
-}
+
+float RePower(int number, int exponent);
+
+
 
 int main()
 {
     int inputNumber, inputExpo;
     char inputChoice;
     const int INVALID_LIMIT = 0;
-    
+    float MAX_FLOAT = numeric_limits<float>::infinity();
+  
+
 
     while (true)
     {
@@ -29,17 +33,13 @@ int main()
             continue;
         }
 
-        //here we ask for exponent - non-negative is allowed so need for check  
+        //here we ask for exponent - non-negative is allowed so No need for check  
         cout << "ENTER AN EXPONENT: " << endl;
         cin >> inputExpo; 
      
 
         //first we must check if our result will cause an overflow 
-        /*
-            If the return value is negative that indicates an overflow.
-            If there is a 0 then the carryout was 0 meaning overflow.
-        */
-        if(RePower(inputNumber, inputExpo) <= INVALID_LIMIT){
+        if(RePower(inputNumber, inputExpo) == MAX_FLOAT){
             cerr << "warning: these numbers will cause an overflow" << endl;
         }
         else {
@@ -62,4 +62,16 @@ int main()
     } //end loop
 
     return 0; 
+}
+
+
+float RePower(int number, int exponent){
+    if(exponent == 0)
+        return 1;
+    if(exponent == 1)
+        return number;
+    if(exponent < 0) //negative exponent 
+        return 1 / (float)(RePower(number, -exponent));
+    else
+        return number * RePower(number, exponent - 1); //positive exponent 
 }
