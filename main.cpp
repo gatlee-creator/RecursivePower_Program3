@@ -30,8 +30,8 @@ float RePower(int number, int exponent);
 
 int main()
 {
-    int inputNumber, inputExpo;
-    char inputChoice;
+    int numberInput, expoInput;
+    char menuInput;
     const int INVALID_LIMIT = 0; //setting the threshold 
     float MAX_FLOAT = numeric_limits<float>::infinity(); //data type limit 
   
@@ -40,33 +40,33 @@ int main()
     {
         //here we ask and check the integer 
         cout << "ENTER AN INTEGER: " << endl;
-        cin >> inputNumber;
-        if(inputNumber < INVALID_LIMIT){
+        cin >> numberInput;
+        if(numberInput < INVALID_LIMIT){
             cerr << "error: integer must be non-negative" << endl;
             continue;
         }
 
         //here we ask for exponent - non-negative is allowed so No need for check  
         cout << "ENTER AN EXPONENT: " << endl;
-        cin >> inputExpo; 
+        cin >> expoInput; 
      
 
         //first we must check if our result will cause an overflow 
-        if(RePower(inputNumber, inputExpo) == MAX_FLOAT){
+        if(RePower(numberInput, expoInput) == MAX_FLOAT){
             cerr << "warning: these numbers will cause an overflow" << endl;
         }
         else {
             //here we call Repower and display the result
-            cout << "RESULT: " << RePower(inputNumber, inputExpo) << endl;
+            cout << "RESULT: " << RePower(numberInput, expoInput) << endl;
         }
        
 
         //here we will ask user if they want to continue 
         cout << "ENTER ANOTHER NUMBER?" << endl;
         cout << "enter Y or any other key to quit" << endl;
-        cin >> inputChoice;
+        cin >> menuInput;
 
-        if(inputChoice == 'Y')
+        if(menuInput == 'Y')
             continue; //restart loop
         else
             break; //exit program
